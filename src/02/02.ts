@@ -19,7 +19,7 @@ type StudentType = {
     technologies:ThechnologyType[]   // Array<ThechnologyType>
 }
 
-const student:any= {
+const student:StudentType= {
     id:1,
     name:'Anton',
     age:32,
