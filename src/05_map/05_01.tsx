@@ -3,7 +3,7 @@ export type ManType = {
     age: number;
 };
 
-const people: Array<ManType> = [
+const people: ManType[] = [
     { name: 'Andrew Ivanov', age: 33 },
     { name: 'Alexander Petrov', age: 24 },
     { name: 'Dmitry Sidorov', age: 18 },

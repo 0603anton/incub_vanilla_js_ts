@@ -1,21 +1,13 @@
-import {
-    AdressNumberType,
-    StreetTitleType,
-    GovermentBuildingType,
-    CityType,
-    GovBuildAdressStreetTitleType
-} from '../01-hello-tests/02_02';
-import {addMoneyToBudget, getBuildingsWithStaffCountGreaterThen, repairHouse, toFireStaff, toHireStaff} from './04_02';
+import {CityType, GovermentBuildingType} from '../01-hello-tests/02_02';
+import {getStreetsTitlesOfGovernmentBuildings, getStreetsTitlesOfHouses} from "./05_02";
 
+let city: CityType;
 
-let city1: CityType;
-
-
-    city1 = {
+beforeEach(() => {
+    city = {
         title: 'New York',
         houses: [
             {
-                id:1,
                 buildedAt: 2012,
                 repaired: false,
                 address: {
@@ -27,7 +19,6 @@ let city1: CityType;
             },
 
             {
-                id:2,
                 buildedAt: 2008,
                 repaired: false,
                 address: {
@@ -39,7 +30,6 @@ let city1: CityType;
             },
 
             {
-                id:3,
                 buildedAt: 2020,
                 repaired: false,
                 address: {
@@ -74,24 +64,23 @@ let city1: CityType;
             }],
         citizensNumber: 1000000
     }
-
-
-
-const demolishHousesOnTheStreet = (city1:CityType, street:string) => {
-        city1.houses = city1.houses.filter((h)=>{
-        return h.address.street.title !== street
-    })
-}
-// 01. Дополните тип HouseType (добавьте порядковый id от 1 и по возрастанию)
-// 02. Создайте в том же файле ещё одну функцию, чтобы тесты прошли
-test('House should be destroyed', () => {
-    demolishHousesOnTheStreet(city1, 'Happy street');
-
-    expect(city1.houses.length).toBe(1);
-    expect(city1.houses[0].id).toBe(1);
-
 })
 
+// 01. создайте в том же файле ещё одну функцию, чтобы тесты прошли
+test.skip('list of streets titles of government buildings', ()=> {
+    let streetsNames = getStreetsTitlesOfGovernmentBuildings(city.governmentBuildings);
 
+    expect(streetsNames.length).toBe(2);
+    expect(streetsNames[0]).toBe("Central Str");
+    expect(streetsNames[1]).toBe("South Str");
+})
 
+// 02. создайте в том же файле ещё одну функцию, чтобы тесты прошли
+test('list of streets titles', ()=> {
+    let streetsNames = getStreetsTitlesOfHouses(city.houses);
 
+    expect(streetsNames.length).toBe(3);
+    expect(streetsNames[0]).toBe("White street");
+    expect(streetsNames[1]).toBe("Happy street");
+    expect(streetsNames[2]).toBe("Happy street");
+})
