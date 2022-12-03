@@ -5,6 +5,9 @@ const increaseAge = (u:UserType_09) => {
 type UserType_09 ={
     name:string
     age:number
+    address:{
+        title:string
+    }
 }
 // test('should increase user age', ()=>{
 //
@@ -46,4 +49,26 @@ type UserType_09 ={
 //     })
 // })
 
-test('ref type user obj')
+test('ref type user obj', ()=>{
+    let address = {
+        title:`Minsk`
+    }
+
+    let user1:UserType_09={
+                name:`Anton`,
+        age:32,
+        address:address
+    }
+
+    let user2:UserType_09={
+        name:`Angelina`,
+        age:32,
+        address:address
+    }
+
+    address.title = `Kaliningrad`
+
+    expect(user1.address).toBe(address)
+    expect(user1.address.title).toBe(`Kaliningrad`)
+
+})
