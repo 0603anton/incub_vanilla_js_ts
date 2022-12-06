@@ -1,6 +1,6 @@
 import {
     addBook, addCompany,
-    change_adr, changeCompany, changeCompany2,
+    change_adr, changeCompany, changeCompany2, compa,
     makeHair,
     moveUserToOtherHouse, removeBook,
     update_laptop, updateBook,
@@ -162,42 +162,41 @@ test('addCompany', () => {
     expect(upgraded.companies[2].title).toBe('google')
 })
 
-test('changeCompany', () => {
-    let awesomeUser: UserWithLaptopType & WithCompaniesType = {
-        name: 'Anton',
-        hair: 32,
-        address: {title: 'Dubovaya', city: 'Kalik'},
-        laptop: {title: `asus`},
-        companies: [
-            {
-                id: 1,
-                title: `Sber`
-            },
-            {
-                id: 2,
-                title: `it-incubator`
-            },
-        ]
-    }
+// test('changeCompany', () => {
+//     let awesomeUser: UserWithLaptopType & WithCompaniesType = {
+//         name: 'Anton',
+//         hair: 32,
+//         address: {title: 'Dubovaya', city: 'Kalik'},
+//         laptop: {title: `asus`},
+//         companies: [
+//             {
+//                 id: 1,
+//                 title: `Sber`
+//             },
+//             {
+//                 id: 2,
+//                 title: `it-incubator`
+//             },
+//         ]
+//     }
+//
+//
+//     const upgraded = changeCompany(awesomeUser, 1, `google`)
+//
+//     expect(awesomeUser).not.toBe(upgraded)
+//     expect(upgraded.laptop).toBe(awesomeUser.laptop)
+//     expect(upgraded.address).toBe(awesomeUser.address)
+//     expect(upgraded.address.title).toBe(awesomeUser.address.title)
+//     expect(upgraded.companies[0].title).toBe('google')
+// })
 
-
-    const upgraded = changeCompany(awesomeUser, 1, `google`)
-
-    expect(awesomeUser).not.toBe(upgraded)
-    expect(upgraded.laptop).toBe(awesomeUser.laptop)
-    expect(upgraded.address).toBe(awesomeUser.address)
-    expect(upgraded.address.title).toBe(awesomeUser.address.title)
-    expect(upgraded.companies[0].title).toBe('google')
-})
-
-test('changeCompany', () => {
-    let awesomeUser: UserWithLaptopType = {
-        name: 'Anton',
-        hair: 32,
-        address: {title: 'Dubovaya', city: 'Kalik'},
-        laptop: {title: `asus`},
-        companies:
-    }
+test('changeCompanyaaa', () => {
+    // let awesomeUser: UserWithLaptopType = {
+    //     name: 'Anton',
+    //     hair: 32,
+    //     address: {title: 'Dubovaya', city: 'Kalik'},
+    //     laptop: {title: `asus`},
+    // }
 
     let companies = {
         'Anton': [
@@ -218,6 +217,10 @@ test('changeCompany', () => {
 
         ]
     }
-    changeCompany2(companies, 'Anton',1,'SBER')
+
+    let changedCompany:compa = changeCompany2(companies, 'Anton',1,'SBER')
+
+    console.log(changedCompany)
+        expect(changedCompany['Anton'][0].title).toBe('SBER')
 
 })

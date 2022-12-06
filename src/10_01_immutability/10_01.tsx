@@ -64,7 +64,19 @@ export function changeCompany(u: UserWithLaptopType & WithCompaniesType,id:numbe
 }
 // TODO в функцию достаточно, только частично передавать тип, где присутсвует св-во с которым работает функция
 
-export function changeCompany2(companies:{[key:string]:WithCompaniesType[]}, userName: string, comoanyID:number, newTitle:string) {
-    let copy = {...companies}
-    copy[userName] = copy['Anton'].map
+
+export type compa={
+    [key:string]:Array<{id:number, title:string }>
+}
+export function changeCompany2(companies:compa, userName: string, comoanyID:number, newTitle:string) {
+
+    // let compCopy = {...companies}
+    //     compCopy[userName]= compCopy[userName].map((el)=>
+    //             el.id === comoanyID ? {...el, title:newTitle} : el)
+    //     return compCopy;
+
+    return {...companies, [userName]:companies[userName].map((el)=>
+            el.id === comoanyID ? {...el, title:newTitle} : el)}
+    // не случилось сначала в одну строку, но потом победил, короче если деструктуризация, то название св-ва: его содержимое
+    // и перезаписываем при необъодимости
 }
