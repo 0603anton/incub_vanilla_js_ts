@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const mentors = [
+        {id: `id100`, title: 'Dimych', salary: 10},//0
+        {id: `id2022`, title: 'Viktor', salary: 100},//1
+        {id: `id323242`, title: 'Valera', salary: 100},//2
+        {id: `id489829898989`, title: 'Artem', salary: 100},//3
+    ]
+
+    const artemId = 'id489829898989';
+    const mentor1 = mentors.find(m => m.id === artemId); // достали с помощью метода перебора, прошлись по всему массиву
+
+    const mentor2 = mentors[3]; // зашли сразу куда надоЮ очень эффективно, но в жизни мы этот индекс мы не знаем
+
+
+    console.log(Object.keys(mentor1))
+    mentor1.salary = 50;
+
+    const students = [
+        {id: 'id100', title: 'Andrew'}, //0
+        {id: 'id2', title: 'Anna'}, //1
+        {id: 'id4', title: 'Saha'}, //2
+        //
+        {id: 'id1000000', title: 'Marinaa'}, //1000000
+    ]
+
+    const marina = students.filter(s=> s.id === 'id1000000')
+    console.log(marina)
+
+    const studentsObj = {
+        'id100': {id: 'id100', title: 'Andrew'},
+        'id2': {id: 'id2', title: 'Anna'},
+        'id4': {id: 'id4', title: 'Saha'}, //2
+        //
+        'id1000000': {id: 'id1000000', title: 'Marinaa'}, //1000000
+    }
+
+    const marina2= studentsObj['id1000000'];
+    studentsObj['id1000000'].title += 'Sun'
+    console.log(studentsObj)
+
+
+</script>
+</body>
+</html>
