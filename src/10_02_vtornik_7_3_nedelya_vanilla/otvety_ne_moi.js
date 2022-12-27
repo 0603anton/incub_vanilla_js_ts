@@ -12,7 +12,7 @@ const  repeatString = (str,repeats, separator ) => {
     newStr = newStr.slice()
     return newStr
 }
-
+console.log(repeatString("yo", 3, " "));
 
 (str + sep).repeat(repeatCount).slice(0, -sep.length)
 
