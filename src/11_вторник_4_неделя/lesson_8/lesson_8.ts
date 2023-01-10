@@ -43,7 +43,7 @@ export function getSum(number: number): number {
 
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
-    return number.toString().split(``).reduce((acc,el)=> acc+ Number(el),0)
+    return number.toString().split(``).reduce((acc, el) => acc + Number(el), 0)
 }
 
 
@@ -53,19 +53,19 @@ export function getSum(number: number): number {
 // В противном случае - false.
 
 export const isEvenIndexSumGreater = (arr: Array<number>): boolean => {
-let sumEven = arr.map((el,i)=>{
-    return i%2==0 ? el : 0
-}).reduce((acc, curr)=> {
-    return acc + curr
-})
-    let sumOdd = arr.map((el,i)=>{
-        return i%2!==0 ? el : 0
-    }).reduce((acc, curr)=> {
+    let sumEven = arr.map((el, i) => {
+        return i % 2 == 0 ? el : 0
+    }).reduce((acc, curr) => {
+        return acc + curr
+    })
+    let sumOdd = arr.map((el, i) => {
+        return i % 2 !== 0 ? el : 0
+    }).reduce((acc, curr) => {
         return acc + curr
     })
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
-    return sumEven >sumOdd
+    return sumEven > sumOdd
 }
 
 // 5. Функция getSquarePositiveIntegers принимает параметром массив чисел и возвращает новый массив. 
@@ -74,15 +74,17 @@ let sumEven = arr.map((el,i)=>{
 
 
 export function getSquarePositiveIntegers(array: Array<number>): Array<number> {
+    return array.filter((el) => Number.isInteger(el)).filter(el => el > 0).map(el => el ** 2)
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
-    return []
+
 }
 
 // 6. Функция принимает параметром целое не отрицательное число N и возвращает сумму всех чисел от 0 до N включительно
 // Попробуйте реализовать функцию без использования перебирающих методов.
-
+// sumTo(n) = n + sumTo(n-1) for n > 1.
 export function sumFirstNumbers(N: number): number {
+
     //...здесь пишем код.
     // В return стоит "заглушка", чтоб typescript не ругался
     return 0
