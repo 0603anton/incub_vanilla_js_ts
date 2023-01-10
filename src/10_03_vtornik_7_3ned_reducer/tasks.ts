@@ -15,17 +15,29 @@ export const mult = (salary: number, increaser: number) => {
 
 
 export type ActionType = {
-    type: 'SUM',
+    type: 'SUM' | 'SUB' | 'MULT' | 'DIV'
     n: number
 }
 
 export type StateType = number;
 export const salaryReducer = (salary: number, action: ActionType): StateType => { // вместо salary state
     switch (action.type) {
-        case "SUM":{
+        case 'SUM': {
             return salary + action.n
         }
-        default:{
+        case 'SUB': {
+            return salary - action.n
+        }
+
+        case 'DIV':{
+            return salary / action.n
+        }
+        case 'MULT':{
+            return salary * action.n
+        }
+
+
+        default: {
             return salary
         }
     }
