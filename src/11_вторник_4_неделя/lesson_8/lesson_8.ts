@@ -1,6 +1,8 @@
 // 1. Функция sum принимает параметром целые положительные
 // числа (неопределённое кол-во) и возвращает их сумму (rest).
 
+import {res} from "../../03/03";
+
 export function sum(...nums: Array<number>): number {
     console.log(nums)
     const result = nums.reduce((acc, el) => {
@@ -53,7 +55,7 @@ export function getSum(number: number): number {
 // В противном случае - false.
 
 export const isEvenIndexSumGreater = (arr: Array<number>): boolean => {
-    let sumEven = arr.map((el, i) => {
+    let sumEven = arr.map((el, i) => { // можно через фильтр
         return i % 2 == 0 ? el : 0
     }).reduce((acc, curr) => {
         return acc + curr
@@ -84,10 +86,11 @@ export function getSquarePositiveIntegers(array: Array<number>): Array<number> {
 // Попробуйте реализовать функцию без использования перебирающих методов.
 // sumTo(n) = n + sumTo(n-1) for n > 1.
 export function sumFirstNumbers(N: number): number {
-
-    //...здесь пишем код.
-    // В return стоит "заглушка", чтоб typescript не ругался
-    return 0
+    let result = 0;
+    for (let i = N; i >=0 ; i--) {
+        result+=i
+    }
+    return result
 }
 
 // ...и "лапку" вверх!!!!
@@ -101,8 +104,38 @@ export function sumFirstNumbers(N: number): number {
 // Считаем, что количество банкнот каждого номинала не ограничено
 
 
+
+//https://www.youtube.com/watch?v=x-BsFzVadKM
+//     export function getBanknoteList(amountOfMoney: number): Array<number> {
+//         const banknotes = [1000, 500, 100, 50, 20, 10, 5, 2, 1]
+//         let result =[]
+//         if (amountOfMoney >+ 1000){
+//
+//             for (let i = Math.trunc(amountOfMoney/1000); i >0 ; i--) {
+//                 result.push(1000)
+//             }
+//         } else if (amountOfMoney >+ 1000){
+//             for (let i = amountOfMoney/1000; i >0 ; i--) {
+//                 result.push(1000)
+//             }
+//         }
+//         //...здесь пишем код.
+//         // В return стоит "заглушка", чтоб typescript не ругался
+//         return [1]
+//     }
+//https://www.youtube.com/watch?v=f3-tg0CeDlg
 export function getBanknoteList(amountOfMoney: number): Array<number> {
-    //...здесь пишем код.
-    // В return стоит "заглушка", чтоб typescript не ругался
-    return [1]
+    const banknotes = [1000, 500, 100, 50, 20, 10, 5, 2, 1];
+    let arr = [];
+    if (amountOfMoney > 0){
+        for (let i = 0; i < banknotes.length; i++) {
+            while (amountOfMoney - banknotes[i] >= 0) {
+                amountOfMoney -= banknotes[i]
+                arr.push(banknotes[i])
+            }
+        }
+    } else {
+        console.log("We can't give your amount of money:" + amountOfMoney)
+    }
+    return arr
 }
